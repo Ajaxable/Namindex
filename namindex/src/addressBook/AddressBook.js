@@ -69,9 +69,7 @@ class AddressBook extends Component {
   }
 
   render() {
-    const {
-      contacts
-    } = this.state
+    const { contacts } = this.state
 
     return (
       <>
