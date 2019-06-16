@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Card = props => {
-  const { contact, index } = props;
+const Card = () => {
 
-  const activeClass = contact.favorite ? "active" : "";
+  const [initials, setInitials] = useState("LK")
+  const [name, setName] = useState("Lasha Krikheli")
+  const [phone, setPhone] = useState("555-555-5555")
+  const [email, setEmail] = useState("email@me.com")
+  const [favorite, setFavorite] = useState("false")
+
+  useEffect(() => {
+    console.log(`Value has changed to: ${favorite}`)
+  })
+
+  const activeClass = favorite ? "active" : "";
 
   return (
     <section className="card-container">
       <header className="card-header">
-        <span initials={contact.initials} />
-        <h2>{contact.name}</h2>
-        <div
-          className={`favorite ${activeClass}`}
-          onClick={() => {
-            props.handleFavoriteToggle(index);
-          }}
-        >
+        <span initials={initials} />
+        <h2>{name}</h2>
+        <div className={`favorite ${activeClass}`} onClick={() => { 
+          setFavorite(!favorite)
+        }}>
           ☆
         </div>
       </header>
@@ -24,11 +30,11 @@ const Card = props => {
         <ul>
           <li>
             <span>Phone</span>
-            {contact.phone ? contact.phone : "n/a"}
+            {phone ? phone : "n/a"}
           </li>
           <li>
             <span>Email</span>
-            {contact.email ? contact.email : "n/a"}
+            {email ? email : "n/a"}
           </li>
         </ul>
       </main>
