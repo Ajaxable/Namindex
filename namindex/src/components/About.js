@@ -1,9 +1,8 @@
 import React from "react";
 
-const About = () => {
-  return (
-    <h2>About Page</h2>
-  )
+const About = ({ match }) => {
+  let who = match.params.userId || "page";
+  return <h2>About {who}</h2>;
 };
 
 export default About;
